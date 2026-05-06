@@ -4,7 +4,7 @@
 
 typedef struct queue
 {
-    char *ID;
+    char ID[20];
     int wait;
     struct queue *next;
 }queue;
@@ -12,14 +12,14 @@ typedef struct queue
 queue *makeNode(char *ID, int wait){
     queue *q = malloc(sizeof(queue));
     q->next = NULL;
-    q->ID = strdup(ID);
+    strcpy(q->ID, ID);
     q->wait = wait;
 }
 
 queue *addNode(queue *head, char *ID, int wait){
     if (head == NULL)
     {
-        return makeNode(ID, wait);
+        return makeNode(ID, 0);
     }
     else
     {
@@ -43,15 +43,18 @@ void printOutput(queue *head){
     }
     else
     {
+        int total = 0;
         queue *curr = head;
         printf("ORDER");
         while (curr->next != NULL)
         {
             printf(" %s", curr->ID);
+            total = total + curr->wait;
             curr = curr->next;
         }
         printf(" %s\n", curr->ID);
-        printf("WAIT %d", curr->wait);
+        total = total + curr->wait;
+        printf("WAIT %d", total);
     }
 }
 
@@ -63,8 +66,16 @@ int main(){
     scanf("%d", &n);
     for (int i = 0; i < n; i++)
     {
-        scanf("%s %d", buffer, &temp);
-        head = addNode(head, buffer, temp);
+        if (i == 0)
+        {
+            scanf("%s", buffer);
+            head = addNode(head, buffer, 0);
+        }
+        else
+        {
+            scanf("%d %s", &temp, buffer);
+            head = addNode(head, buffer, temp);
+        }
     }
     printOutput(head);
 }
