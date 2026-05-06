@@ -1,3 +1,12 @@
+/** EL2008 Praktikum Pemecahan Masalah dengan Pemrograman 2024/2025
+ *   Modul               : 4
+ *   Hari dan Tanggal    : Rabu, 6 Mei 2026
+ *   Nama (NIM)          : Pascal Baihaqi Syarif (13224027)
+ *   Nama File           : soal2.c
+ *   Deskripsi           : Queue program yang mensimulasikan antrian pasien. pasien pertama memiliki wait time 0.
+ *                         pasien pasien berikutnya memiliki wait time kumulatif dari pasien pasien sebelumnya.
+ * 
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
