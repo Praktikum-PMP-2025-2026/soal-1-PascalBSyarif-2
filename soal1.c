@@ -77,5 +77,7 @@ int main(){
             head = addNode(head, buffer, temp);
         }
     }
+    scanf("%d", &temp);
     printOutput(head);
+    return 0;
 }
