@@ -14,6 +14,7 @@ queue *makeNode(char *ID, int wait){
     q->next = NULL;
     strcpy(q->ID, ID);
     q->wait = wait;
+    return q;
 }
 
 queue *addNode(queue *head, char *ID, int wait){
